@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.AndroCall" parent="@android:style/Theme.Material.NoActionBar">
+        <item name="android:colorPrimary">#3070DC</item>
+        <item name="android:colorAccent">#3070DC</item>
+    </style>
+</resources>

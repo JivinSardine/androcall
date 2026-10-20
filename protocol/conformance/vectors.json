@@ -1,0 +1,121 @@
+{
+  "protocolVersion": 1,
+  "generatedBy": "tools/reference/generate_vectors.py (independent Python reference)",
+  "note": "Executed by the Swift suite (macos/AndroCallTests) and the Kotlin suite (android/app/src/test). Regenerate with: python3 tools/reference/generate_vectors.py",
+  "keySchedule": {
+    "description": "PIN + P-256 ECDH session key schedule (PROTOCOL.md \u00a76.2)",
+    "pin": "042739",
+    "salt": "5f1c9a2e7b3d80461ac5e2f19d37b60c",
+    "iterations": 210000,
+    "serverNonce": "1a2b3c4d5e6f708192a3b4c5d6e7f809",
+    "clientNonce": "8f7e6d5c4b3a29180716253443526170",
+    "serverPrivate": "c9afa9d845ba75166b5c215767b1d6934e50c3db36e89b127b8a622b120f6721",
+    "clientPrivate": "a1b2c3d4e5f60718293a4b5c6d7e8f90123456789abcdef0123456789abcdef0",
+    "serverPublicKey": "0460fed4ba255a9d31c961eb74c6356d68c049b8923b61fa6ce669622e60f29fb67903fe1008b8bc99a41ae9e95628bc64f2f1b20c2d7e9f5177a3c294d4462299",
+    "clientPublicKey": "042fb4523164456633fddf66362edc4fd764c72300f85febc3af686e173b0ce56efff7e6c8dd5005a14945a9ce06d7904fb285d5e9fd908630f22ac3aa4c1bb0f2",
+    "ecdhSharedSecret": "64dee6e042086f1932f17fa5233f21029254e7144e3973ad602252402e195ae8",
+    "transcript": "1a2b3c4d5e6f708192a3b4c5d6e7f8098f7e6d5c4b3a291807162534435261700460fed4ba255a9d31c961eb74c6356d68c049b8923b61fa6ce669622e60f29fb67903fe1008b8bc99a41ae9e95628bc64f2f1b20c2d7e9f5177a3c294d4462299042fb4523164456633fddf66362edc4fd764c72300f85febc3af686e173b0ce56efff7e6c8dd5005a14945a9ce06d7904fb285d5e9fd908630f22ac3aa4c1bb0f25f1c9a2e7b3d80461ac5e2f19d37b60c00033450",
+    "ikm": "f2b57a81262a4570fe4471a974c6b39a2e4ef34b4a2fd7d619731c7e3cd9f85b",
+    "c2sKey": "e5e18fa3e6444879c91cb29799c07527ca660d8bfefde1709ef38e5a806a99f7",
+    "s2cKey": "e5d77ee96c7d1c2b0629b82e1f7388ea4fc46f85c8d78b7fcc0f0d0cdaa2c5e1",
+    "proof": "025a7a751bfd4b76e03193a5979a786009ae2cb433324fed7314ebce566f74fc",
+    "verifyCode": "9259"
+  },
+  "framing": {
+    "description": "Frame encoding and AES-256-GCM sealing (PROTOCOL.md \u00a73, \u00a76.3)",
+    "plaintextFrameHex": "414301010201000000efcdab896745230100000100040001020304",
+    "plaintextFrameDecoded": {
+      "kind": 1,
+      "flags": 2,
+      "seq": 1,
+      "msgId": 81985529216486895,
+      "fragIndex": 0,
+      "fragCount": 1,
+      "payloadHex": "01020304"
+    },
+    "nonceC2SSeq1": "000000010000000000000001",
+    "nonceS2CSeq1": "000000020000000000000001",
+    "encryptedFrameHex": "414301020201000000efcdab8967452301000001000400e701f7a9fc0c070ddf466a4a729247b61d85ad8c",
+    "encryptedFrameS2CHex": "414301020201000000efcdab8967452301000001000400d7ece40e97680a580b3605d2435e8a11d90650f7"
+  },
+  "fragmentation": {
+    "description": "Fragmentation of one logical message (PROTOCOL.md \u00a73.1)",
+    "messageHex": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f2021222324252627",
+    "frames": [
+      "414301010307000000cefaedfe00000000000003001000000102030405060708090a0b0c0d0e0f",
+      "414301010108000000cefaedfe00000000010003001000101112131415161718191a1b1c1d1e1f",
+      "414301010009000000cefaedfe000000000200030008002021222324252627"
+    ],
+    "frameCount": 3
+  },
+  "canonicalJson": {
+    "description": "Canonical JSON serialisation (PROTOCOL.md \u00a74.0)",
+    "messages": [
+      {
+        "name": "call.place",
+        "json": "{\"v\":1,\"type\":\"call.place\",\"id\":\"01HZX8K9Q0M3N4P5R6S7T8V9W\",\"ts\":1767225600000,\"replyTo\":null,\"body\":{\"contactId\":\"c_8f3a2b1c\",\"displayName\":\"Ada Lovelace\",\"number\":\"+15551234567\",\"requestId\":\"01HZX8K9Q0M3N4P5R6S7T8V9W\"}}",
+        "jsonHex": "7b2276223a312c2274797065223a2263616c6c2e706c616365222c226964223a223031485a58384b3951304d334e345035523653375438563957222c227473223a313736373232353630303030302c227265706c79546f223a6e756c6c2c22626f6479223a7b22636f6e746163744964223a22635f3866336132623163222c22646973706c61794e616d65223a22416461204c6f76656c616365222c226e756d626572223a222b3135353531323334353637222c22726571756573744964223a223031485a58384b3951304d334e345035523653375438563957227d7d",
+        "parsed": {
+          "v": 1,
+          "type": "call.place",
+          "id": "01HZX8K9Q0M3N4P5R6S7T8V9W",
+          "ts": 1767225600000,
+          "replyTo": null,
+          "body": {
+            "requestId": "01HZX8K9Q0M3N4P5R6S7T8V9W",
+            "number": "+15551234567",
+            "displayName": "Ada Lovelace",
+            "contactId": "c_8f3a2b1c"
+          }
+        }
+      },
+      {
+        "name": "session.hello",
+        "json": "{\"v\":1,\"type\":\"session.hello\",\"id\":\"01HZX8K9Q0M3N4P5R6S7T8V9X\",\"ts\":1767225600001,\"replyTo\":null,\"body\":{\"capabilities\":[\"contacts\",\"call.place\",\"call.state\"],\"clientName\":\"Test Mac\",\"clientNonce\":\"8f7e6d5c4b3a29180716253443526170\",\"protocolVersion\":1}}",
+        "jsonHex": "7b2276223a312c2274797065223a2273657373696f6e2e68656c6c6f222c226964223a223031485a58384b3951304d334e345035523653375438563958222c227473223a313736373232353630303030312c227265706c79546f223a6e756c6c2c22626f6479223a7b226361706162696c6974696573223a5b22636f6e7461637473222c2263616c6c2e706c616365222c2263616c6c2e7374617465225d2c22636c69656e744e616d65223a2254657374204d6163222c22636c69656e744e6f6e6365223a223866376536643563346233613239313830373136323533343433353236313730222c2270726f746f636f6c56657273696f6e223a317d7d",
+        "parsed": {
+          "v": 1,
+          "type": "session.hello",
+          "id": "01HZX8K9Q0M3N4P5R6S7T8V9X",
+          "ts": 1767225600001,
+          "replyTo": null,
+          "body": {
+            "protocolVersion": 1,
+            "clientName": "Test Mac",
+            "clientNonce": "8f7e6d5c4b3a29180716253443526170",
+            "capabilities": [
+              "contacts",
+              "call.place",
+              "call.state"
+            ]
+          }
+        }
+      }
+    ]
+  },
+  "phoneNumbers": {
+    "description": "Dial-pad sanitisation (PROTOCOL.md \u00a75)",
+    "cases": [
+      {
+        "input": "+1 (555) 123-4567",
+        "expected": "+15551234567"
+      },
+      {
+        "input": "00 44 20 7946 0958",
+        "expected": "+442079460958"
+      },
+      {
+        "input": " 555-123-4567 ",
+        "expected": "5551234567"
+      },
+      {
+        "input": "+1.555.123.4567",
+        "expected": "+15551234567"
+      },
+      {
+        "input": "*123#",
+        "expected": "*123#"
+      }
+    ]
+  }
+}

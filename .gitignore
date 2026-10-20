@@ -1,0 +1,49 @@
+# Build artefacts
+build/
+dist/
+*.app/
+*.dmg
+*.apk
+*.aab
+*.ipa
+local.properties
+.cxx/
+
+# Gradle
+.gradle/
+gradle-app.setting
+gradle-wrapper.jar.bak
+
+# Xcode / SwiftPM (androcall does not use Xcode, but a contributor might)
+*.xcodeproj/
+*.xcworkspace/
+DerivedData/
+.swiftpm/
+Package.resolved
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Editors and OS
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# Secrets — never commit these
+.env
+.env.*
+*.pem
+*.p12
+*.keystore
+*.jks
+keystore.properties
+local.properties
+google-services.json
+
+# Test and coverage output
+coverage/
+*.log

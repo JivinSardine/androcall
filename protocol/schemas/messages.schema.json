@@ -1,0 +1,167 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/JivinSardine/androcall/blob/main/protocol/schemas/messages.schema.json",
+  "title": "androcall protocol messages, version 1",
+  "description": "The wire representation of androcall messages. See protocol/PROTOCOL.md for the normative description, including the canonical JSON rules that these schemas do not capture.",
+  "type": "object",
+  "required": ["v", "type", "id", "ts", "replyTo", "body"],
+  "additionalProperties": false,
+  "properties": {
+    "v": {
+      "description": "Protocol version.",
+      "const": 1
+    },
+    "type": {
+      "description": "Message type.",
+      "type": "string",
+      "enum": [
+        "session.hello",
+        "session.challenge",
+        "session.response",
+        "session.ready",
+        "session.error",
+        "device.info",
+        "call.capabilities",
+        "contacts.request",
+        "contacts.batch",
+        "contacts.complete",
+        "contacts.error",
+        "contact.favorite.set",
+        "contact.favorite.result",
+        "recents.request",
+        "recents.batch",
+        "recents.complete",
+        "recents.error",
+        "call.place",
+        "call.place.result",
+        "call.cancel",
+        "call.answer",
+        "call.decline",
+        "call.end",
+        "call.mute",
+        "call.result",
+        "call.state",
+        "call.ended",
+        "ping",
+        "pong",
+        "log.request",
+        "log.batch",
+        "error"
+      ]
+    },
+    "id": {
+      "description": "Unique message identifier.",
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 64
+    },
+    "ts": {
+      "description": "Sender's clock, in Unix epoch milliseconds.",
+      "type": "integer"
+    },
+    "replyTo": {
+      "description": "The identifier of the message this one answers, or null.",
+      "type": ["string", "null"]
+    },
+    "body": {
+      "type": "object"
+    }
+  },
+  "$defs": {
+    "callState": {
+      "type": "string",
+      "enum": [
+        "dialing",
+        "ringing_outgoing",
+        "ringing_incoming",
+        "active",
+        "ending",
+        "ended",
+        "failed",
+        "rejected",
+        "missed",
+        "unknown"
+      ]
+    },
+    "contact": {
+      "type": "object",
+      "required": [
+        "id", "lookupKey", "displayName", "givenName", "familyName",
+        "organization", "phoneNumbers", "emails", "photo", "photoMimeType",
+        "starred", "sortKey"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string" },
+        "lookupKey": { "type": "string" },
+        "displayName": { "type": "string" },
+        "givenName": { "type": ["string", "null"] },
+        "familyName": { "type": ["string", "null"] },
+        "organization": { "type": ["string", "null"] },
+        "phoneNumbers": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["label", "number", "normalized", "type"],
+            "additionalProperties": false,
+            "properties": {
+              "label": { "type": "string" },
+              "number": { "type": "string" },
+              "normalized": { "type": "string" },
+              "type": { "type": "string" }
+            }
+          }
+        },
+        "emails": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["label", "address"],
+            "additionalProperties": false,
+            "properties": {
+              "label": { "type": "string" },
+              "address": { "type": "string" }
+            }
+          }
+        },
+        "photo": { "type": ["string", "null"], "description": "base64 JPEG thumbnail, or null." },
+        "photoMimeType": { "type": ["string", "null"] },
+        "starred": { "type": "boolean" },
+        "sortKey": { "type": "string" }
+      }
+    },
+    "recentCall": {
+      "type": "object",
+      "required": ["id", "number", "displayName", "type", "timestamp", "durationMs"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string" },
+        "number": { "type": "string" },
+        "displayName": { "type": ["string", "null"] },
+        "type": {
+          "type": "string",
+          "enum": ["incoming", "outgoing", "missed", "rejected", "unknown"]
+        },
+        "timestamp": { "type": "integer" },
+        "durationMs": { "type": ["integer", "null"] }
+      }
+    },
+    "errorCode": {
+      "type": "string",
+      "enum": [
+        "unsupported_version",
+        "auth_failed",
+        "verify_mismatch",
+        "permission_denied",
+        "not_default_dialer",
+        "invalid_number",
+        "invalid_message",
+        "too_large",
+        "stale_request",
+        "timeout",
+        "unsupported_capability",
+        "internal"
+      ]
+    }
+  }
+}

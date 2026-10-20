@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--
+        The platform theme is used so the app has no third-party UI dependency.
+        values-night provides the dark variant.
+    -->
+    <style name="Theme.AndroCall" parent="@android:style/Theme.Material.Light.NoActionBar">
+        <item name="android:colorPrimary">#3070DC</item>
+        <item name="android:colorAccent">#3070DC</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+</resources>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">androcall</string>
+    <string name="tagline">Your Android phone\'s calls and contacts, on your Mac.</string>
+
+    <string name="intro">androcall shares your contacts and call activity with your Mac over Bluetooth. Everything stays between the two devices: there is no account, no server and no analytics.</string>
+
+    <string name="status_bluetooth_off">Bluetooth is off. Turn it on to continue.</string>
+    <string name="status_needs_permissions">androcall still needs these permissions: %1$s</string>
+    <string name="status_ready">Ready. Enter the pairing code and start.</string>
+
+    <string name="permission_bluetooth">Bluetooth (connect)</string>
+    <string name="permission_bluetooth_scan">Bluetooth (scan)</string>
+    <string name="permission_contacts">Contacts</string>
+    <string name="permission_phone_state">Phone state</string>
+    <string name="permission_call">Make calls</string>
+    <string name="grant_permission">Allow %1$s</string>
+
+    <string name="pin_label">Pairing code</string>
+    <string name="pin_hint">6 digits</string>
+    <string name="start">Start androcall</string>
+    <string name="code_label">Verification code</string>
+    <string name="code_waiting">Waiting for your Mac…</string>
+
+    <string name="default_dialer_title">Optional: make androcall your default phone app</string>
+    <string name="default_dialer_button">Set as default phone app</string>
+
+    <string name="pin_required">Enter the 6-digit pairing code.</string>
+    <string name="bluetooth_required">Turn Bluetooth on to continue.</string>
+    <string name="service_started">androcall is running. Your Mac can now connect.</string>
+    <string name="default_dialer_unavailable">This phone cannot change the default phone app.</string>
+
+    <string name="notification_channel_name">androcall connection</string>
+    <string name="notification_channel_description">Shows whether your Mac is connected.</string>
+    <string name="notification_title">androcall</string>
+    <string name="notification_connected">Your Mac is connected.</string>
+    <string name="notification_waiting">Waiting for your Mac…</string>
+</resources>
