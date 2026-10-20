@@ -64,6 +64,7 @@ SWIFT_SOURCES_APP = [
     "Views/WelcomeView.swift",
     "Views/DashboardView.swift",
     "Views/ContactsView.swift",
+    "Views/RecentCallsView.swift",
     "Views/ContactDetailView.swift",
     "Views/DialPadView.swift",
     "Views/CallView.swift",

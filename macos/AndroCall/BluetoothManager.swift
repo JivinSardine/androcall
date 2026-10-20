@@ -171,7 +171,6 @@ public final class BluetoothManager: NSObject, Transport {
                let uuid = UUID(uuidString: identifier) {
                 let peripheral = self.central.retrievePeripherals(withIdentifiers: [uuid]).first
                 if let peripheral = peripheral {
-                    self.central.retrieveConnectedPeripherals(withServices: [GATTIdentifiers.service])
                     self.central.cancelPeripheralConnection(peripheral)
                 }
             }

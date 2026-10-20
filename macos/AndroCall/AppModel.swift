@@ -26,6 +26,8 @@ public final class AppModel: ObservableObject {
 
     @Published public private(set) var contacts: [Contact] = []
     @Published public private(set) var recentCalls: [RecentCall] = []
+    /// Whether the phone refused to share the call log.
+    @Published public private(set) var recentPermissionDenied = false
     @Published public private(set) var contactSyncProgress: Double?
     @Published public private(set) var contactSyncMessage: String = ""
     @Published public private(set) var lastSyncDate: Date?
@@ -179,6 +181,23 @@ public final class AppModel: ObservableObject {
             contactSyncProgress = nil
             contactSyncMessage = ""
             report(error)
+        }
+    }
+
+    /// Ask the phone for its recent calls.
+    public func loadRecentCalls() {
+        guard let session = session, session.state.isReady else { return }
+        let requestId = Message.newIdentifier()
+        Task {
+            do {
+                _ = try await session.request("recents.request", body: [
+                    "requestId": .string(requestId),
+                    "limit": .int(50),
+                ])
+                recentPermissionDenied = false
+            } catch {
+                report(error)
+            }
         }
     }
 
@@ -363,7 +382,7 @@ public final class AppModel: ObservableObject {
             connectionState = .authenticating
         case .ready:
             verificationCode = session?.verificationCode
-            peerCapabilities = session?.peerCapabilities ?? []
+            peerCapabilities = session?.peerCapabilities ?? Capabilities()
             connectionState = .verifying
             // Ask the phone what it can actually do, so the Mac only enables
             // the controls the phone supports.
@@ -400,7 +419,7 @@ public final class AppModel: ObservableObject {
             settings.pairedDeviceName = info.deviceName
         case .callCapabilities(let capabilities):
             callCapabilities = capabilities
-            peerCapabilities = capabilities.capabilityNames
+            peerCapabilities = Capabilities.parse(capabilities.capabilityNames)
         case .callState(let callId, let state, let number, let displayName, let startedAt, let durationMs):
             handleCallState(callId: callId, state: state, number: number, displayName: displayName, startedAt: startedAt, durationMs: durationMs)
         case .callEnded(let callId, let reason, let durationMs):

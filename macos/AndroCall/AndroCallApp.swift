@@ -64,6 +64,7 @@ struct RootView: View {
     enum SidebarItem: Hashable {
         case dashboard
         case contacts
+        case recent
         case dial
         case settings
         case diagnostics
@@ -77,6 +78,8 @@ struct RootView: View {
                         .tag(SidebarItem.dashboard)
                     Label("Contacts", systemImage: "person.2")
                         .tag(SidebarItem.contacts)
+                    Label("Recent calls", systemImage: "clock.arrow.circlepath")
+                        .tag(SidebarItem.recent)
                     Label("Dial", systemImage: "circle.grid.cross")
                         .tag(SidebarItem.dial)
                 }
@@ -121,6 +124,8 @@ struct RootView: View {
                 DashboardView(model: model, settings: model.settings)
             case .contacts:
                 ContactsView(model: model)
+            case .recent:
+                RecentCallsView(model: model)
             case .dial:
                 DialPadView(model: model)
             case .settings:
