@@ -73,6 +73,9 @@ jobs:
 
       - uses: android-actions/setup-android@v3
 
+      - name: Install the Android SDK packages the build needs
+        run: sdkmanager "platforms;android-35" "build-tools;35.0.1" "platform-tools"
+
       - name: Unit tests and protocol conformance
         working-directory: android
         env:
@@ -114,4 +117,8 @@ jobs:
 
       - name: Dependency audit (Android)
         working-directory: android
-        run: ./gradlew --no-daemon dependencies --configuration releaseRuntimeClasspath > /dev/null
+        run: |
+          ./gradlew --no-daemon :app:dependencies --configuration releaseRuntimeClasspath > dependency-tree.txt
+          cat dependency-tree.txt
+          echo "--- resolved direct dependencies ---"
+          grep -E "^[\\+ \\\\---] " dependency-tree.txt | sort -u

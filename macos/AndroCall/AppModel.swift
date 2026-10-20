@@ -362,9 +362,12 @@ public final class AppModel: ObservableObject {
         case .authenticating:
             connectionState = .authenticating
         case .ready:
-            if verificationCode == nil {
-                connectionState = .verifying
-            }
+            verificationCode = session?.verificationCode
+            peerCapabilities = session?.peerCapabilities ?? []
+            connectionState = .verifying
+            // Ask the phone what it can actually do, so the Mac only enables
+            // the controls the phone supports.
+            requestCallCapabilities()
         case .failed(let reason):
             connectionState = .failed(reason)
             lastError = reason
@@ -375,6 +378,21 @@ public final class AppModel: ObservableObject {
         }
     }
 
+    /// Ask the phone which call controls it supports.
+    private func requestCallCapabilities() {
+        guard let session = session, session.state.isReady else { return }
+        Task {
+            do {
+                _ = try await session.request("call.capabilities")
+            } catch {
+                DiagnosticsLog.shared.log(
+                    "could not read the phone's capabilities: \(error.localizedDescription)",
+                    level: .warning
+                )
+            }
+        }
+    }
+
     private func handle(_ event: SessionEvent) {
         switch event {
         case .deviceInfo(let info):
@@ -382,6 +400,7 @@ public final class AppModel: ObservableObject {
             settings.pairedDeviceName = info.deviceName
         case .callCapabilities(let capabilities):
             callCapabilities = capabilities
+            peerCapabilities = capabilities.capabilityNames
         case .callState(let callId, let state, let number, let displayName, let startedAt, let durationMs):
             handleCallState(callId: callId, state: state, number: number, displayName: displayName, startedAt: startedAt, durationMs: durationMs)
         case .callEnded(let callId, let reason, let durationMs):

@@ -66,6 +66,9 @@ jobs:
 
       - uses: android-actions/setup-android@v3
 
+      - name: Install the Android SDK packages the build needs
+        run: sdkmanager "platforms;android-35" "build-tools;35.0.1" "platform-tools"
+
       - name: Test and build
         working-directory: android
         env:

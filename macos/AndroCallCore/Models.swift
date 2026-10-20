@@ -334,6 +334,17 @@ public struct CallCapabilities: Equatable {
         self.reason = reason
     }
 
+    /// The capability names this set implies.
+    public var capabilityNames: [String] {
+        var names: [String] = []
+        if canAnswer { names.append("call.answer") }
+        if canDecline { names.append("call.decline") }
+        if canEnd { names.append("call.end") }
+        if canMute { names.append("call.mute") }
+        if canSelectAudioDevice { names.append("call.audio") }
+        return names
+    }
+
     public static func parse(_ body: [String: JSONValue]) -> CallCapabilities {
         CallCapabilities(
             canAnswer: body["canAnswer"]?.boolValue ?? false,

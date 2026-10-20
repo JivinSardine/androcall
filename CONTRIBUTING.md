@@ -49,7 +49,7 @@ tools/reference/        the independent Python reference implementation
 
 ## Changing the protocol
 
-The protocol is specified in [`protocol/PROTOCOL.md`](../protocol/PROTOCOL.md) and
+The protocol is specified in [`protocol/PROTOCOL.md`](protocol/PROTOCOL.md) and
 implemented three times. If you change it:
 
 1. Update `protocol/PROTOCOL.md`.
@@ -80,7 +80,7 @@ A pull request should:
 - build for **both** macOS architectures;
 - pass the macOS test suite and the Android test suite;
 - pass `python3 tools/reference/generate_vectors.py --check`;
-- not reduce the coverage described in [`docs/TESTING.md`](../docs/TESTING.md).
+- not reduce the coverage described in [`docs/TESTING.md`](docs/TESTING.md).
 
 If your change cannot be tested automatically, say so in the pull request and describe
 exactly what you tested by hand.
@@ -93,7 +93,7 @@ macOS version, your phone's Android version, and the diagnostic log from both de
 
 ## Security problems
 
-Do not open a public issue. See [`docs/SECURITY.md`](../docs/SECURITY.md).
+Do not open a public issue. See [`docs/SECURITY.md`](docs/SECURITY.md).
 
 ## Commit messages
 
